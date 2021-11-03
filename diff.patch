@@ -1,0 +1,122 @@
+diff --git a/build/RCTImageUtils.mir b/build/RCTImageUtils.mir
+index 4cf724588449b346f588e17e52ffcbde87e92a5b..0642008d475c06bad6c2407beafadacb20370fed 100644
+--- a/build/RCTImageUtils.mir
++++ b/build/RCTImageUtils.mir
+@@ -172,6 +172,10 @@
+     %3 = tail call %struct.__CFDictionary* @CGImageSourceCopyPropertiesAtIndex(%struct.CGImageSource* %2, i64 2, %struct.__CFDictionary* null) #7, !clang.arc.no_objc_arc_exceptions !14
+     ret %0* null
+   }
++
++  define void @bar() #0 {
++    ret void
++  }
+   
+   ; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
+   declare double @llvm.maxnum.f64(double, double) #5
+@@ -500,3 +504,106 @@ body:             |
+     RET undef $lr, implicit $x0
+ 
+ ...
++---
++name:            bar
++alignment:       4
++tracksRegLiveness: true
++liveins:
++  - { reg: '$x0' }
++frameInfo:
++  stackSize:       16
++  maxAlignment:    8
++  adjustsStack:    true
++  hasCalls:        true
++  maxCallFrameSize: 0
++stack:
++  - { id: 0, type: spill-slot, offset: -8, size: 8, alignment: 8, callee-saved-register: '$lr' }
++  - { id: 1, type: spill-slot, offset: -16, size: 8, alignment: 8, callee-saved-register: '$fp' }
++machineFunctionInfo:
++  hasRedZone:      false
++body:             |
++  bb.0:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++  bb.1:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++  bb.2:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++  bb.3:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++  bb.4:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++  bb.5:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++  bb.6:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++    frame-setup STPXi killed $x24, killed $x23, $sp, 18
++    frame-setup STPXi killed $x22, killed $x21, $sp, 20
++    frame-setup STPXi killed $x20, killed $x19, $sp, 22
++
++  bb.20:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++
++    $sp = frame-setup SUBXri $sp, 208, 0
++    frame-setup STPDi killed $d13, killed $d12, $sp, 10
++    frame-setup STPDi killed $d11, killed $d10, $sp, 12
++    frame-setup STPDi killed $d9, killed $d8, $sp, 14
++
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++
++  bb.21:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++
++    $sp = frame-setup SUBXri $sp, 208, 0
++    frame-setup STPDi killed $d13, killed $d12, $sp, 10
++    frame-setup STPDi killed $d11, killed $d10, $sp, 12
++    frame-setup STPDi killed $d9, killed $d8, $sp, 14
++
++    frame-setup STPXi killed $x26, killed $x25, $sp, 16
++
++  bb.31:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++
++    $sp = frame-setup SUBXri $sp, 208, 0
++    frame-setup STPDi killed $d13, killed $d12, $sp, 10
++    frame-setup STPDi killed $d11, killed $d10, $sp, 12
++    frame-setup STPDi killed $d9, killed $d8, $sp, 14
++  bb.32:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++
++    $sp = frame-setup SUBXri $sp, 208, 0
++    frame-setup STPDi killed $d13, killed $d12, $sp, 10
++    frame-setup STPDi killed $d11, killed $d10, $sp, 12
++    frame-setup STPDi killed $d9, killed $d8, $sp, 14
++  bb.33:
++    liveins: $d0, $d1, $d2, $x0, $d12, $d13, $d10, $d11, $d8, $d9, $x25, $x26, $x23, $x24, $x21, $x22, $x19, $x20, $lr
++
++    $sp = frame-setup SUBXri $sp, 208, 0
++    frame-setup STPDi killed $d13, killed $d12, $sp, 10
++    frame-setup STPDi killed $d11, killed $d10, $sp, 12
++    frame-setup STPDi killed $d9, killed $d8, $sp, 14
++...
