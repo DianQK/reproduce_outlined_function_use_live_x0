@@ -3,21 +3,18 @@
 rm -rf build
 mkdir build
 
-clang -x objective-c -target arm64-apple-ios10.0 -Os \
--fobjc-arc -fobjc-weak \
--isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk \
+clang -x c -target arm64-apple-ios13 -Os \
+-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk \
 -emit-llvm \
--c src/RCTImageUtils.m -o build/RCTImageUtils.o
-
-opt --Os -objc-arc-contract build/RCTImageUtils.o -o build/RCTImageUtils.o
+-c example.c -o build/example.o
 
 llc \
 -march=arm64 \
 -enable-machine-outliner=always -machine-outliner-reruns=1 \
 --simplify-mir \
 -stop-before=machine-outliner \
-build/RCTImageUtils.o \
--o build/RCTImageUtils.mir
+build/example.o \
+-o build/example.mir
 
 patch -p1 < diff.patch
 
@@ -26,7 +23,7 @@ llc \
 -run-pass=machine-outliner -machine-outliner-reruns=1 \
 --simplify-mir \
 -verify-machineinstrs \
-build/RCTImageUtils.mir \
--o build/RCTImageUtils.outlined.mir
+build/example.mir \
+-o build/example.outlined.mir
 
-cat build/RCTImageUtils.outlined.mir  | tail -n +315 | head -n 10
+cat build/example.outlined.mir | tail -n +165 | head -n 10
